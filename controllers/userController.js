@@ -5,6 +5,7 @@ module.exports = {
   // GET all users
   getUsers(req, res) {
     User.find()
+    .select("-__v")
       .then(async (users) => {
         const userObj = {
           users,
@@ -70,7 +71,7 @@ module.exports = {
   },
 };
 
-// /api/users/:userId/friends/:friendId
+// /users/:userId/friends/:friendId
 
 // POST to add a new friend to a user's friend list
 
