@@ -1,19 +1,15 @@
 const { Schema, model } = require("mongoose");
 const moment = require("moment");
-const reactionSchema = require('./Reaction');
-
+const reactionSchema = require("./Reaction");
 
 const thoughtSchema = new Schema(
   {
-    // thoughtText -
-    // String
-    // Required
-    // Must be between 1 and 280 characters
+    // thoughtText, string, required, must be between 1 and 280 characters
     thoughtText: {
       type: String,
       required: true,
-      maxlength: 280,
-      minlength: 1,
+      maxLength: 280,
+      minLength: 1,
     },
     // createdAt- date, set default value to the current timestamp, use a getter method to format the timestamp on query
     createdAt: {
@@ -37,9 +33,8 @@ const thoughtSchema = new Schema(
   }
 );
 
-// Schema Settings
-// Create a virtual called "reactionCount" that retrieves the length of the thought's "reactions" array field on query.
-thoughtSchema.virtual("reactionCount").get(() => {
+// Schema retrieves the length of the thought's "reactions" array field on query.
+thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
