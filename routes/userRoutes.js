@@ -5,12 +5,12 @@ const {
   createUser,
   updateUser,
   deleteUser,
-} = require('../../controllers/userController.js');
+} = require('../controllers/userController');
 
-// /api/users
+// /users
 router.route('/').get(getUsers).post(createUser);
 
-// /api/users/:userId
+// /users/:userId
 router
   .route('/:userId')
   .get(getSingleUser)
