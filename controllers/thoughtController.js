@@ -1,12 +1,13 @@
-const { ObjectId } = require("mongoose").Types;
+// const { ObjectId } = require("mongoose").Types;
 const { User, Thought } = require("../models");
 
 // /thoughts
 module.exports = {
   // GET to get all thoughts
   getThoughts(req, res) {
-    Thought.find({})
-      .then(async (thoughts) => {
+    Thought.find()
+    .select("-__v")
+    .then((thoughts) => {
         const thoughtObj = {
           thoughts,
         };
@@ -36,11 +37,23 @@ module.exports = {
   },
 
   // POST to create a new thought (don't forget to push the created thought's _id to the associated user's thoughts array field)
-  createThought(req, res) {
-    Thought.create(req.body)
-      .then((thought) => res.json(thought))
-      .catch((err) => res.status(500).json(err));
-  },
+createThought(req, res) {
+  Thought.create(req.body)
+  .then((thought) => {
+    return User.findOneAndUpdate(
+      { username: req.body.username },
+      { $push: { thoughts: thought._id } },
+      { new: true}
+    );
+  })
+  .then((user) => {
+    if(!user) {
+      return  res.status(404).json({ message: "No user with this id!" })
+    }
+    res.status(200).json(user);
+  })
+  .catch((err) => res.status(500).json(err));
+},
 
   // PUT to update a thought by its _id
   updateThought(req, res) {
@@ -86,8 +99,6 @@ module.exports = {
 
   // POST to create a reaction stored in a single thought's reactions array field
   addReaction(req, res) {
-    console.log("You are adding an reaction");
-    console.log(req.body);
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $addToSet: { reactions: req.body } },

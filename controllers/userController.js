@@ -1,4 +1,4 @@
-const { ObjectId } = require("mongoose").Types;
+// const { ObjectId } = require("mongoose").Types;
 const { User, Thought } = require("../models");
 
 module.exports = {
@@ -6,9 +6,9 @@ module.exports = {
   getUsers(req, res) {
     User.find()
       .select("-__v")
-      .then((user) => {
+      .then((users) => {
         const userObj = {
-          user,
+          users,
         };
         return res.json(userObj);
       })
@@ -73,7 +73,7 @@ module.exports = {
   addFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { friends: req.body.friendId } },
+      { $addToSet: { friends: req.body } },
       { runValidators: true, new: true }
     )
       .then((user) =>
@@ -88,13 +88,13 @@ module.exports = {
   deleteFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $pull: { friends: req.params.friendId } },
-      { new: true }
+      { $pull: { friends: { friendId: req.params.friendId } } },
+      { runValidators: true }
     )
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No User find with this ID!" })
-          : res.json(user)
+          : res.status(200).json({ message: "Friend deleted" })
       )
       .catch((err) => res.status(500).json(err));
   },
