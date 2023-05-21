@@ -5,7 +5,7 @@ const { User, Thought } = require("../models");
 module.exports = {
   // GET to get all thoughts
   getThoughts(req, res) {
-    Thought.find()
+    Thought.find({})
       .then(async (thoughts) => {
         const thoughtObj = {
           thoughts,
@@ -104,7 +104,6 @@ module.exports = {
   },
 
   // DELETE to pull and remove a reaction by the reaction's reactionId value
-
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
