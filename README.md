@@ -13,6 +13,9 @@
 
 ## 📑 Description
 This API was created specifically for a social network web application where users can share their thoughts, react to friends’ thoughts, and create and removed friends from a friend list. 
+
+[Walkthrough Video](https://youtu.be/-3Q63chC_nU)
+
 ## 💾 Installation
 
 ## 💻 Usage
