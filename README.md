@@ -12,7 +12,7 @@
 - [**Questions**](#❓-questions)
 
 ## 📑 Description
-
+This API was created specifically for a social network web application where users can share their thoughts, react to friends’ thoughts, and create and removed friends from a friend list. 
 ## 💾 Installation
 
 ## 💻 Usage
@@ -22,6 +22,7 @@
 ## 🚀 Technology
 [![My Skills](https://skillicons.dev/icons?i=js,nodejs,express,mongodb)](https://skillicons.dev)
 
+![More Skills](https://img.shields.io/badge/Insomnia-5849be?style=for-the-badge&logo=Insomnia&logoColor=white)
 - **Insomnia**
 
 ## 🧪 Test
