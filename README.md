@@ -6,21 +6,19 @@
 
 - [**Description**](#📑-description)
 - [**Installation**](#💾-installation)
-- [**Usage**](#💻-usage)
 - [**Technology**](#🚀-technology)
 - [**Test**](#🧪-test)
 - [**Questions**](#❓-questions)
 
 ## 📑 Description
-This API was created specifically for a social network web application where users can share their thoughts, react to friends’ thoughts, and create and removed friends from a friend list. 
+This API was created specifically for a social network web application using a NoSql database to hold large amounts of unstructured data. On this site, users can share their thoughts, react to friends’ thoughts, and create and removed friends from a friend list. 
 
-[Walkthrough Video](https://youtu.be/-3Q63chC_nU)
+[Walkthrough Video](https://youtu.be/Q0fO7pphScs)
 
 ## 💾 Installation
+To install, clone down from GitHub Repository. Once cloned down to local machine, open root folder in terminal. Run `npm i` to install required modules and packages. Once complete, run `npm run dev` to load the server and begin.
 
-## 💻 Usage
-
-## 🤝 Contribution
+![Installation](./images/initialize.gif)
 
 ## 🚀 Technology
 [![My Skills](https://skillicons.dev/icons?i=js,nodejs,express,mongodb)](https://skillicons.dev)
@@ -29,7 +27,9 @@ This API was created specifically for a social network web application where use
 - **Insomnia**
 
 ## 🧪 Test
+Insomnia Core used to test all API routes. Users, Thoughts, and Reactions all created and each tested with POST, PUT, and DELETE routes. All function correctly to successfully create, update, and delete data the Social Network API NoSQL database.
 
+![Testing Get Routes](./images/get_routes.gif)
 ## ❓ Questions
 
 🖐 My name is Cassie! If you have any question about me or the project, feel free to contact me:
